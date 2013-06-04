@@ -1,0 +1,9 @@
+<?page title="Home" contentType="text/html;charset=UTF-8"?>
+<zk>
+<include src="/templates/menu.zul" />
+	<div align="center" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('hf') @init('br.com.facade.HomeFacade')"
+		form="@id('fx') @load(hf.usuario)">
+		Seja bem vindo(a) : <label value="@load(fx.login)" />
+	</div>
+</zk>

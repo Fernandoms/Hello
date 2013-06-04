@@ -1,0 +1,27 @@
+<?page title="Upload de TCC" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<include src="/templates/menu.zul" />
+	<separator height="15px" />
+	<div align="center">
+		<button label="Envie seu TCC" height="100px" width="300px" upload="true">
+			<attribute name="onUpload"><![CDATA[
+	org.zkoss.util.media.Media media = event.getMedia();
+	if (media != null) {
+		br.com.facade.UploadTCCFacade uploadTCCFacade = new br.com.facade.UploadTCCFacade();
+		uploadTCCFacade.setArquivoTCC(media);
+		iframe.setContent(uploadTCCFacade.getArquivoTCC());
+
+	} else {
+		Messagebox.show("Sem arquivo enviado", "Error", Messagebox.OK,
+				Messagebox.ERROR);
+		break;
+	}
+]]></attribute>
+		</button>
+	</div>
+	<separator height="15px" />
+	<div align="center" height="70%">
+		<iframe id="iframe" width="90%"
+			height="95%" style="border: 1px solid gray" />
+	</div>
+</zk>
